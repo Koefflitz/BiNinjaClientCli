@@ -22,8 +22,7 @@ public class ExitCommand extends CliCommand<UIController> {
    }
 
    @Override
-   protected CliCommandResult execute(String input, UIController controller) throws IOException,
-                                                                                    InterruptedException {
+   protected CliCommandResult execute(String input, UIController controller) throws InterruptedException {
       if (controller.activeDownloadCount() > 0) {
          if (!promptReally(controller))
             return new CliCommandResult(false, "");

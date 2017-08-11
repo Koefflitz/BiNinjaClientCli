@@ -116,7 +116,6 @@ public class ClientCli extends Cli<UIController> implements UI {
 
    @Override
    public void connected() {
-      System.err.println("connected");
       commands.removeAll(commands_offline);
       commands.addAll(commands_connected);
       super.connected();
@@ -124,7 +123,6 @@ public class ClientCli extends Cli<UIController> implements UI {
 
    @Override
    protected void disconnected() {
-      System.err.println("disconnected");
       commands.removeAll(commands_connected);
       commands.addAll(commands_offline);
       super.disconnected();
