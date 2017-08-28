@@ -63,7 +63,7 @@ public class DownloadCommand extends CliCommand<UIController> {
       String[] args = input.split("\\s+");
       ArgumentModel parsedArgs;
       try {
-         parsedArgs = PARSER.parseArguments(1, args.length - 1, args);
+         parsedArgs = PARSER.parseArguments(1, args);
       } catch (ArgumentParseException e) {
          return new CliCommandResult(false, e.getMessage());
       }
