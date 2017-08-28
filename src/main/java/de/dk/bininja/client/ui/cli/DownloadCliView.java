@@ -4,6 +4,7 @@ import static de.dk.bininja.net.DownloadState.CANCELLED;
 import static de.dk.bininja.net.DownloadState.COMPLETE;
 import static de.dk.bininja.net.DownloadState.ERROR;
 
+import de.dk.bininja.net.Download;
 import de.dk.bininja.net.DownloadListener;
 import de.dk.bininja.net.DownloadState;
 import de.dk.bininja.ui.cli.CliCommandResult;
@@ -22,7 +23,7 @@ public class DownloadCliView implements DownloadListener {
    }
 
    @Override
-   public void stateChanged(DownloadState state) {
+   public void stateChanged(DownloadState state, Download download) {
       this.state = state;
       switch (state) {
       case INITIALIZING:
@@ -73,7 +74,7 @@ public class DownloadCliView implements DownloadListener {
    }
 
    @Override
-   public void loadProgress(double progress, long receivedBytes, long total) {
+   public void loadProgress(double progress, long receivedBytes, long total, float loadSpeed) {
 
    }
 
