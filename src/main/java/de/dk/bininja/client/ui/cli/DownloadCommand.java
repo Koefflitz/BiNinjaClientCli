@@ -52,7 +52,7 @@ public class DownloadCommand extends CliCommand<UIController> {
                                      .setDescription("If set to true the program will block"
                                                      + "until the operation is finished."
                                                      + "Otherwise the operation will run in background. "
-                                                     + "Default value is false")
+                                                     + "Default value is true")
                                      .setExpectsValue(true)
                                      .build()
                                   .buildAndGet();

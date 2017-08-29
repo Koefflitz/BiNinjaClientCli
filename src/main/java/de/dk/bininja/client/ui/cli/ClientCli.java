@@ -23,17 +23,17 @@ public class ClientCli extends Cli<UIController> implements UI {
    private static final String PROMPT_NOT_CONNECTED = "BiNinja (n.c.)>";
    private static final String PROMPT_CONNECTED = "BiNinjaClient>";
 
-   private final Collection<? extends CliCommand<? super UIController>> commands_connected
+   private final Collection<? extends CliCommand<? super UIController>> commandsConnected
       = Arrays.asList(new DownloadCommand(this::newDownload, in));
 
-   private final Collection<? extends CliCommand<? super UIController>> commands_offline
+   private final Collection<? extends CliCommand<? super UIController>> commandsOffline
       = Arrays.asList(new ConnectCommand());
 
    private DownloadCliViewManager downloads = new DownloadCliViewManager();
 
    {
       commands.add(new ExitCommand(in));
-      commands.addAll(commands_offline);
+      commands.addAll(commandsOffline);
    }
 
    public ClientCli(UIController controller, BufferedReader in) {
@@ -46,11 +46,6 @@ public class ClientCli extends Cli<UIController> implements UI {
 
    private static Collection<CliCommand<? super UIController>> getCommands() {
       return new LinkedList<>();
-   }
-
-   @Override
-   public void prepareDownload(DownloadMetadata metadata) throws IllegalStateException {
-
    }
 
    private DownloadCliView newDownload() {
@@ -116,15 +111,15 @@ public class ClientCli extends Cli<UIController> implements UI {
 
    @Override
    public void connected() {
-      commands.removeAll(commands_offline);
-      commands.addAll(commands_connected);
+      commands.removeAll(commandsOffline);
+      commands.addAll(commandsConnected);
       super.connected();
    }
 
    @Override
    protected void disconnected() {
-      commands.removeAll(commands_connected);
-      commands.addAll(commands_offline);
+      commands.removeAll(commandsConnected);
+      commands.addAll(commandsOffline);
       super.disconnected();
    }
 
