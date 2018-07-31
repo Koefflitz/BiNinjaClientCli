@@ -15,11 +15,11 @@ import de.dk.bininja.client.model.DownloadMetadata;
 import de.dk.bininja.client.ui.UIController;
 import de.dk.bininja.ui.cli.CliCommand;
 import de.dk.bininja.ui.cli.CliCommandResult;
+import de.dk.opt.ArgumentModel;
+import de.dk.opt.ArgumentParser;
+import de.dk.opt.ArgumentParserBuilder;
+import de.dk.opt.ex.ArgumentParseException;
 import de.dk.util.StringUtils;
-import de.dk.util.opt.ArgumentModel;
-import de.dk.util.opt.ArgumentParser;
-import de.dk.util.opt.ArgumentParserBuilder;
-import de.dk.util.opt.ex.ArgumentParseException;
 
 /**
  * @author David Koettlitz
@@ -48,7 +48,7 @@ public class DownloadCommand extends CliCommand<UIController> {
       return ArgumentParserBuilder.begin()
                                   .addArgument(ARG_URL, "The url to download from.")
                                   .addArgument(ARG_PATH, false, "The target path of the download.")
-                                  .buildOption(OPT_BLOCKING, "blocking")
+                                  .buildOption(OPT_BLOCKING)
                                      .setDescription("If set to true the program will block"
                                                      + "until the operation is finished."
                                                      + "Otherwise the operation will run in background. "
